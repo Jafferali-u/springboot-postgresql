@@ -29,7 +29,7 @@ public class CustomerController {
 		
 		// save a list of Customers
         repository.saveAll(Arrays.asList(new Customer("Salim", "Khan")
-                       , new Customer("Rajesh", "Parihar")
+                       , new Customer("Jaffer", "Ali")
                        , new Customer("Dharmendra", "Bhojwani")));
 		
 		return "Customers are created";
