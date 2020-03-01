@@ -32,6 +32,7 @@ public class CustomerController {
                        , new Customer("Jaffer", "Ali")
 		       , new Customer("A123", "B1234")
 		       , new Customer("A456", "B")
+			, new Customer("IT WORKING", "WORKING")
                        , new Customer("jaffer", "Jaffer")));
 		
 		return "Customers are created";
