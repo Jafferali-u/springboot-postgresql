@@ -31,6 +31,7 @@ public class CustomerController {
         repository.saveAll(Arrays.asList(new Customer("BBBB", "CCC")
                        , new Customer("Jaffer", "Ali")
 		       , new Customer("A123", "B1234")
+		       , new Customer("A456", "B")
                        , new Customer("jaffer", "Jaffer")));
 		
 		return "Customers are created";
