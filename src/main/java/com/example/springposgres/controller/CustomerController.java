@@ -25,7 +25,7 @@ public class CustomerController {
 	@GetMapping("/bulkcreate")
 	public String bulkcreate(){
 		// save a single Customer
-		repository.save(new Customer("Rajesh", "Bhojwani"));
+		repository.save(new Customer("AA", "AAA"));
 		
 		// save a list of Customers
         repository.saveAll(Arrays.asList(new Customer("Salim", "Khan")
