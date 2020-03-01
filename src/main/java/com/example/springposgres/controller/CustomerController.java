@@ -38,6 +38,14 @@ public class CustomerController {
 		
 		return "Customers are created";
 	}
+	
+	@GetMapping("/test")
+	public String test(){
+		
+		
+		return "Welcome to my project";
+	}
+	
 	@PostMapping("/create")
 	public String create(@RequestBody CustomerUI customer){
 		// save a single Customer
