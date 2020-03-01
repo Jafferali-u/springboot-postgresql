@@ -28,7 +28,7 @@ public class CustomerController {
 		repository.save(new Customer("AA", "AAA"));
 		
 		// save a list of Customers
-        repository.saveAll(Arrays.asList(new Customer("Salim", "Khan")
+        repository.saveAll(Arrays.asList(new Customer("BBBB", "CCC")
                        , new Customer("Jaffer", "Ali")
                        , new Customer("jaffer", "Jaffer")));
 		
