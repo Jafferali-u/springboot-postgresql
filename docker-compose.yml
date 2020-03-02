@@ -1,0 +1,25 @@
+version: '3'
+services:
+  springboot:
+     image: jafferaliu/springboot-postgresql
+     container_name: springboot
+     #     build: .
+     ports:
+       - 9090:9090
+     depends_on:
+       - "db"
+     links:
+       - "db:db"
+
+  db:
+     image: postgres
+     container_name: postgresql12
+     restart: always
+     volumes:
+       - ./database_data:/var/lib/postgresql/data
+     ports:
+       - 5432:5432
+     environment:
+       - POSTGRES_PASSWORD=root
+       - POSTGRES_DB=POSTGRESQL
+       - POSTGRES_USER=postgres
