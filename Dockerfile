@@ -1,4 +1,4 @@
-FROM centos
+FROM jafferaliu/springboot-postgresql
 
 RUN yum install -y \
        java-1.8.0-openjdk \
