@@ -6,7 +6,7 @@ pipeline{
     stage("code check"){
         steps{
             withSonarQubeEnv('sonar') {
-                sh " ./gradlew clean build sonar:sonar"
+                sh " ./gradlew sonar"
             }
         }
     }
