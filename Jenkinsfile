@@ -1,5 +1,6 @@
 currentBuild.displayName = "springboot-#"+currentBuild.number
 
+pipeline{ 
   stages{
     stage("code check"){
         steps{
@@ -9,3 +10,4 @@ currentBuild.displayName = "springboot-#"+currentBuild.number
         }
     }
   }
+}
