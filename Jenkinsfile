@@ -10,7 +10,6 @@ pipeline{
             }
         }
     }
-  }
   stage('Sonar scan result check') {
         steps {
             timeout(time: 5, unit: 'MINUTES') {
@@ -28,4 +27,5 @@ pipeline{
                 }
             }
         }
+  }
 }
