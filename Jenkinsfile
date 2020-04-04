@@ -37,7 +37,8 @@ pipeline{
             withCredentials([usernameColonPassword(credentialsId: 'Sonaradmin', variable: 'Sonaradmin')]) {
                 sh '''
                     set +x
-                    curl -v -u admin:admin --upload-file build/libs/spring_psql-0.0.1-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/
+                    mv build/libs/spring_psql-0.0.1-SNAPSHOT.jar build/libs/spring_psql-0.0.${currentBuild.number}-SNAPSHOT.jar
+                    curl -v -u "$Sonaradmin" --upload-file build/libs/spring_psql-0.0.${currentBuild.number}-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/
                     '''
                 }
             }
@@ -46,7 +47,7 @@ pipeline{
             steps{
                 sshagent(['ansadmin_ansible']) {
                   sh """
-                    ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_docker-push.yaml -e ansible_python_interpreter=/usr/bin/python2.7 -e version="version"${currentBuild.number}
+                    ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_docker-push.yaml -e ansible_python_interpreter=/usr/bin/python2.7 -e version=${currentBuild.number}
                      """
                 }
             }
@@ -55,7 +56,7 @@ pipeline{
             steps{
                 sshagent(['ansadmin_ansible']) {
                   sh """
-                    ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_kubernetes.yaml -e version="version"${currentBuild.number}
+                    ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_kubernetes.yaml -e version=${currentBuild.number}
                      """
                 }
             }
