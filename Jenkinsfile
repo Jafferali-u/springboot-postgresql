@@ -34,11 +34,20 @@ pipeline{
         }
       stage("file share"){
         steps{
-         withCredentials([usernameColonPassword(credentialsId: 'Sonaradmin', variable: 'Sonaradmin')]) {
-                     sh '''
-                          set +x
-                         curl -u "$Sonaradmin" --upload-file build/libs/spring_psql-0.0.1-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/
-                       '''
+            withCredentials([usernameColonPassword(credentialsId: 'Sonaradmin', variable: 'Sonaradmin')]) {
+                sh '''
+                    set +x
+                    curl -u "$Sonaradmin" --upload-file build/libs/spring_psql-0.0.1-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/
+                    '''
+                }
+            }
+        }
+        stage("bulid image"){
+            steps{
+                sshagent(['ansadmin_ansible']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_docker-push.yaml -e version="Version-'+currentBuild.number
+                       """
                 }
             }
         }
