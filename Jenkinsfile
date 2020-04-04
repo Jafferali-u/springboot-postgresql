@@ -27,5 +27,10 @@ pipeline{
                 }
             }
        }  
+       stage("gradle build"){
+        steps {
+            sh "gradlew clean build"
+            }
+        }
   }
 }
