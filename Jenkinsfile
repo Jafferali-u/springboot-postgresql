@@ -35,11 +35,10 @@ pipeline{
       stage("upload to Nexus"){
         steps{
             withCredentials([usernameColonPassword(credentialsId: 'Sonaradmin', variable: 'Sonaradmin')]) {
-                sh '''
+                sh """
                     set +x
-                    mv build/libs/spring_psql-0.0.1-SNAPSHOT.jar build/libs/spring_psql-0.0."${currentBuild.number}"-SNAPSHOT.jar
-                    curl -v -u "$Sonaradmin" --upload-file build/libs/spring_psql-0.0."${currentBuild.number}"-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/
-                    '''
+                    curl -v -u "$Sonaradmin" --upload-file build/libs/spring_psql-0.0.1-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/spring_psql-0.0.${currentBuild.number}-SNAPSHOT.jar
+                    """
                 }
             }
         }
