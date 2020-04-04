@@ -51,5 +51,14 @@ pipeline{
                 }
             }
         }
+    stage("Depoly kubernetes"){
+            steps{
+                sshagent(['ansadmin_ansible']) {
+                  sh """
+                    ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_kubernetes.yaml -e version="version"${currentBuild.number}
+                     """
+                }
+            }
+        }
   }
 }
