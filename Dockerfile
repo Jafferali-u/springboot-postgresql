@@ -12,11 +12,12 @@ ENV JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre"
 RUN java -version
 RUN echo $JAVA_HOME
 RUN echo $PATH
+#ADD springboot-postgresql/ /app/springboot-postgresql
 WORKDIR /app
-ADD springboot-postgresql/ /app/springboot-postgresql
-WORKDIR /app/springboot-postgresql
-RUN ./gradlew clean build
+#RUN ./gradlew clean build
 #COPY springboot-postgresql/build/libs/springboot-postgresql-0.0.1-SNAPSHOT.jar app.jar
+COPY springboot-postgresql-0.0.1-SNAPSHOT.jar .
 VOLUME ["/app"]
 EXPOSE 9090
-ENTRYPOINT ["java","-jar","build/libs/springboot-postgresql-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","springboot-postgresql-0.0.1-SNAPSHOT.jar"]
+#ENTRYPOINT ["java","-jar","build/libs/springboot-postgresql-0.0.1-SNAPSHOT.jar"]
