@@ -46,7 +46,7 @@ pipeline{
             steps{
                 sshagent(['ansadmin_ansible']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_docker-push.yaml -e version="Version-'+currentBuild.number
+                        ssh -o StrictHostKeyChecking=no ansadmin@172.31.63.160 ansible-playbook springboot-mysql_docker-push.yaml -e version="Version-"+currentBuild.number
                        """
                 }
             }
