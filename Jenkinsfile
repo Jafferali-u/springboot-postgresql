@@ -26,13 +26,6 @@ pipeline{
                  } 
                 }
             }
-        }
-    
-      stage("mevan build"){
-        steps {
-            sh "gradlew clean build"
-            }
-        }
-    
+       }  
   }
 }
