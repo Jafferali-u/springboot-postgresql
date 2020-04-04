@@ -32,7 +32,7 @@ pipeline{
             sh "./gradlew clean build"
             }
         }
-      stage("file share"){
+      stage("upload to Nexus"){
         steps{
             withCredentials([usernameColonPassword(credentialsId: 'Sonaradmin', variable: 'Sonaradmin')]) {
                 sh '''
