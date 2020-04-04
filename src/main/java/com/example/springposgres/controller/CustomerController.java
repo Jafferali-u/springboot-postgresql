@@ -43,7 +43,7 @@ public class CustomerController {
 	public String test(){
 		
 		
-		return "Welcome to my project version 26";
+		return "Welcome to my project version 34";
 	}
 	
 	@PostMapping("/create")
