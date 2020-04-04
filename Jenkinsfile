@@ -32,5 +32,16 @@ pipeline{
             sh "./gradlew clean build"
             }
         }
+    stage("file share"){
+        steps{
+            sshagent(['Sonaradmin']) {
+                sh """
+                
+                curl -v --user --upload-file spring_psql-0.0.1-SNAPSHOT.jar http://172.31.18.116:8081/repository/myrepo/
+                
+                """
+                }
+            }
+        }
   }
 }
