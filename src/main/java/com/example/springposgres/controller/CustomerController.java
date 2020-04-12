@@ -43,7 +43,7 @@ public class CustomerController {
 	public String test(){
 		
 		
-		return "Welcome to my project version 42\n This is autoscale Testing  ";
+		return "Welcome to my project version 43\n This is autoscale Testing  ";
 	}
 	
 	@PostMapping("/create")
